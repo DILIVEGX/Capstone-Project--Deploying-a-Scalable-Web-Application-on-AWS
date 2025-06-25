@@ -1,6 +1,6 @@
-# Cloud-Based Notes App
+# Capstone Project: Deploying a Scalable Web Application on AWS
 
-This is a simple cloud-based notes application built with AWS services (Lambda, API Gateway, DynamoDB, and S3) and a basic HTML/JS frontend.
+In this capstone project, you will deploy a scalable, fault-tolerant web application on AWS using key services such as EC2, S3, RDS, Lambda, and CloudWatch. You’ll build a full-stack application, manage its infrastructure, and set up CI/CD pipelines to automate deployments. Your application will utilize AWS’s compute, storage, database, and monitoring tools, showcasing your ability to design and deploy cloud-based solutions that are both scalable and reliable.
 
 ## Technologies Used
 
@@ -15,6 +15,8 @@ This is a simple cloud-based notes application built with AWS services (Lambda, 
 - Amazon S3
   - Bucket: cloud-based-notes-app
   - Stores image files associated with notes
+  - Bucket: deploying-a-scalable-web-application-on-aws
+  - CI/CD implemented frontend bucket
 - API Gateway
   - REST API created with the resource: /notes
   - Methods: GET, POST, DELETE, GET {id}
@@ -71,6 +73,24 @@ headers: {
 - All methods use Lambda proxy integration
 - CORS was enabled manually in each method and required the header above to work correctly
 
+### 5. S3 Frontend Bucket:
+
+- Bucket name: deploying-a-scalable-web-application-on-aws  
+- Stores:
+  - index.html
+  - buildspec.yml
+  - notes.js
+  - README.md
+  - styles.css
+- This is the Frontend auto deployable with CodePipeline
+
+### 6. CodePipeline
+
+- Pipeline name: DeployingaScalableWebApplicationonAWS
+- Source github proyect: https://github.com/DILIVEGX/Capstone-Project--Deploying-a-Scalable-Web-Application-on-AWS
+- Build proyect name: DeployingaScalableWebApplicationonAWS
+- Deploy to the S3 frontend bucket: deploying-a-scalable-web-application-on-aws
+
 ## User Interaction
 
 - The app uses an HTML frontend with embedded JavaScript (notes.js)
@@ -107,3 +127,10 @@ Ensure your Lambda execution role has the following permissions:
 https://3sj4ujk124.execute-api.us-east-2.amazonaws.com/prod/notes
 
 This endpoint serves all the GET, POST, and DELETE operations for notes.
+
+## S3 Frontend website endpoint
+
+http://deploying-a-scalable-web-application-on-aws.s3-website.us-east-2.amazonaws.com 
+
+This endpoint allows to use deployable note app.
+
